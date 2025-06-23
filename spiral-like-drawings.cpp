@@ -22,7 +22,7 @@ void GenerateSpiralImageWithGaps(const std::string& input_path,
     // Загрузка изображения с диска
     cv::Mat img = cv::imread(input_path);
     if (img.empty()) {
-        throw std::runtime_error("Не удалось загрузить изображение: " + input_path);
+        throw std::runtime_error("Can't load image: " + input_path);
     }
 
     // Преобразование изображения в оттенки серого
@@ -169,7 +169,7 @@ void GenerateTriangularSpiralImageWithGaps(const std::string& input_path,
     int gap_thickness = 3) {
     cv::Mat img = cv::imread(input_path);
     if (img.empty()) {
-        throw std::runtime_error("Не удалось загрузить изображение: " + input_path);
+        throw std::runtime_error("Can't load image: " + input_path);
     }
 
     cv::Mat gray;
@@ -352,7 +352,7 @@ void GenerateHexagonalSpiralImageWithGaps(const std::string& input_path,
     int gap_thickness = 3) {
     cv::Mat img = cv::imread(input_path);
     if (img.empty()) {
-        throw std::runtime_error("Не удалось загрузить изображение: " + input_path);
+        throw std::runtime_error("Can't load image " + input_path);
     }
 
     cv::Mat gray;
@@ -500,7 +500,7 @@ int main(int argc, char* argv[]) {
     try {
         // Проверка минимального количества аргументов
         if (argc < 4) {
-            std::cerr << "Использование: " << argv[0] << " <флаг> <входной_путь> <выходной_путь> [размер_холста] [макс_толщина] [мин_толщина] [интервал]" << std::endl;
+            std::cerr << "Usage: " << argv[0] << " <flag> <input_path> <output_path> [canvas_size] [max_thickness] [min_thickness] [interval] [gap] [gap_thickness]" << std::endl;
             return -1;
         }
 
@@ -560,9 +560,9 @@ int main(int argc, char* argv[]) {
             return -1;
         }
 
-        std::cout << "Спираль успешно создана!" << std::endl;
+        std::cout << "Spiral image created successeful!" << std::endl;
     } catch (const std::exception& e) {
-        std::cerr << "Ошибка: " << e.what() << std::endl;
+        std::cerr << "Error: " << e.what() << std::endl;
         return -1;
     }
     return 0;
